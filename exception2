@@ -1,0 +1,23 @@
+#include <iostream>
+#include <exception>
+#include <array>
+using namespace std;
+
+int main()
+{
+    try
+    {
+        array<int, 3> tab = {1, 2, 3};
+        tab.at(10000000000) = 4;
+        cout << tab.at(10000000000) << endl;
+    }
+    catch (const out_of_range& e)
+    {
+        cerr << "Wystąpił błąd zakresu: " << e.what() << endl;
+    }
+    catch (const exception& e)
+    {
+        cerr << "Wystąpił inny błąd: " << e.what() << endl;
+    }
+    return 0;
+}
